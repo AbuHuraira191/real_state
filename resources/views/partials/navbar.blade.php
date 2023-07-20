@@ -1,6 +1,10 @@
 <!-- Header Starts -->
 <div class="navbar-wrapper">
 
+    @if ($errors->any())
+        <div id="error-container" data-errors="{{ $errors->toJson() }}"></div>
+    @endif
+
     <div class="navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -15,15 +19,17 @@
 
             </div>
 
-
             <!-- Nav Starts -->
-            <div class="navbar-collapse  collapse">
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{route('index')}}">Home</a></li>
-                    <li><a href="{{route('about')}}">About</a></li>
-                    <li><a href="{{route('agents')}}">Agents</a></li>
-                    <li><a href="{{route('blog')}}">Blog</a></li>
-                    <li><a href="{{route('contact')}}">Contact</a></li>
+                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('index') }}">Home</a></li>
+                    <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="{{ route('about') }}">About</a></li>
+                    <li class="{{ Request::is('agents') ? 'active' : '' }}"><a href="{{ route('agents') }}">Agents</a></li>
+{{--                    <li class="{{ Request::is('blog') ? 'active' : '' }}"><a href="{{ route('blog') }}">Blog</a></li>--}}
+                    <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
+{{--                    <li><a data-toggle="modal" data-target="#loginpop">Login</a></li>--}}
+                    <li class="{{ Request::is('loginPage') ? 'active' : '' }}"><a href="{{ route('loginPage') }}">Login</a></li>
+                    <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ route('register') }}">Register</a></li>
                 </ul>
             </div>
             <!-- #Nav Ends -->
@@ -42,7 +48,7 @@
         <ul class="pull-right">
             <li><a href="{{route('buysalerent')}}">Buy</a></li>
             <li><a href="{{route('buysalerent')}}">Sale</a></li>
-            <li><a href="{{route('buysalerent')}}">Rent</a></li>
+            <li><a href="{{route('buysalerent')}}">Agent</a></li>
         </ul>
     </div>
     <!-- #Header Starts -->

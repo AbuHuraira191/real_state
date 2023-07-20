@@ -2,10 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SignupRequest;
+use App\Services\UserServices;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    private $user_service;
+
+    public function __construct(UserServices $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
+
+    public function signup(SignupRequest $request){
+
+        $res = $this->user_service->signup($request);
+
+        if ($res){
+            $role = session('role');
+            return redirect()->route($role.'_index');
+        }else{
+            return redirect()->route('index');
+        }
+
+    }
+
+    public function loginPage(){
+        return view('pages.login');
+    }
+
+    public function login(LoginRequest $request){
+        session()->put('role', $request['role']);
+        session()->put('email', $request['email']);
+
+        return redirect()->route($request['role'].'_index');
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect()->route('index');
+    }
+
     public function index()
     {
         return view('pages.index');

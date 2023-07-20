@@ -1,9 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="">
-
-
         <div id="slider" class="sl-slider-wrapper">
 
             <div class="sl-slider">
@@ -118,17 +117,18 @@
                                 </select>
                             </div>
                             <div class="col-lg-3 col-sm-4">
-{{--                                <button class="btn btn-success"  onclick="window.location.href='buysalerent.blade.php'">Find Now</button>--}}
                                 <a href="{{ route('buysalerent') }}" class="btn btn-success">Find Now</a>
 
                             </div>
                         </div>
 
-
                     </div>
                     <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
                         <p>Join now and get updated with all the properties deals.</p>
-                        <button class="btn btn-info"   data-toggle="modal" data-target="#loginpop">Login</button>        </div>
+                        {{--                        <button class="btn btn-info"   data-toggle="modal" data-target="#loginpop">Login</button>--}}
+                        <a href="{{ route('loginPage') }}" class="btn btn-info">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-info">Register</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -288,4 +288,30 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @if ($errors->any())
+        <script>
+            // JavaScript to display the validation errors as an alert
+            document.addEventListener('DOMContentLoaded', function () {
+                const errorMessages = @json($errors->all());
+                if (errorMessages.length > 0) {
+                    const alertContainer = document.createElement('div');
+                    alertContainer.classList.add('alert-container');
+                    errorMessages.forEach(message => {
+                        const alert = document.createElement('div');
+                        alert.classList.add('alert', 'alert-danger');
+                        alert.textContent = message;
+                        alertContainer.appendChild(alert);
+                    });
+                    document.body.appendChild(alertContainer);
+
+                    setTimeout(function () {
+                        document.body.removeChild(alertContainer);
+                    }, 5000); // Adjust the time in milliseconds (5 seconds in this example)
+                }
+            });
+        </script>
+    @endif
 @endsection

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('partials.head')
+    <head>
+        @include('partials.head')
+        <style>
+        @yield('style')
+        </style>
+    </head>
     <body>
         @include('partials.navbar')
 
@@ -8,4 +13,6 @@
 
         @include('partials.footer')
     </body>
+
+        @yield('script')
 </html>

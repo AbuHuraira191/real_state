@@ -20,7 +20,8 @@
                 <p>Get notified about the latest properties in our marketplace.</p>
                 <form class="form-inline" role="form">
                     <input type="text" placeholder="Enter Your email address" class="form-control">
-                    <button class="btn btn-success" type="button">Notify Me!</button></form>
+                    <button class="btn btn-success" type="button">Notify Me!</button>
+                </form>
             </div>
 
             <div class="col-lg-3 col-sm-3">
@@ -48,38 +49,51 @@
 
 
 <!-- Modal -->
-<div id="loginpop" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="row">
-                <div class="col-sm-6 login">
-                    <h4>Login</h4>
-                    <form class="" role="form">
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
-                </div>
-                <div class="col-sm-6">
-                    <h4>New User Sign Up</h4>
-                    <p>Join today and get updated with all the properties deal happening around.</p>
-                    <a href="{{ route('register') }}" class="btn btn-info">Join Now</a>
-{{--                    <button type="submit" class="btn btn-info"  onclick="window.location.href='register.blade.php'">Join Now</button>--}}
-                </div>
+{{--<div id="loginpop" class="modal fade">--}}
+{{--    <div class="modal-dialog">--}}
+{{--        <div class="modal-content">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-6 login">--}}
+{{--                    <h4>Login</h4>--}}
+{{--                    <form method="POST" action="{{route('login')}}">--}}
+{{--                        @csrf--}}
+{{--                        <div class="form-group">--}}
+{{--                            <select class="form-control" name="role" required>--}}
+{{--                                <option value="" selected disabled hidden>Select Role</option>--}}
+{{--                                <option value="admin">Admin</option>--}}
+{{--                                <option value="seller">Seller</option>--}}
+{{--                                <option value="dealer">Dealer</option>--}}
+{{--                                <option value="buyer">Buyer</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
 
-            </div>
-        </div>
-    </div>
-</div>
+{{--                        <div class="form-group">--}}
+{{--                            <label class="sr-only" for="exampleInputEmail2">Email address</label>--}}
+{{--                            <input type="email" name="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" required>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-group">--}}
+{{--                            <label class="sr-only" for="exampleInputPassword2">Password</label>--}}
+{{--                            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="checkbox">--}}
+{{--                            <label>--}}
+{{--                                <input type="checkbox"> Remember me--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
+{{--                        <button type="submit" class="btn btn-success">Sign in</button>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-6">--}}
+{{--                    <h4>New User Sign Up</h4>--}}
+{{--                    <p>Join today and get updated with all the properties deal happening around.</p>--}}
+{{--                    <a href="{{ route('register') }}" class="btn btn-info">Join Now</a>--}}
+{{--                    <button type="submit" class="btn btn-info"  onclick="window.location.href='register.blade.php'">Join Now</button>--}}
+{{--                </div>--}}
+
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <!-- /.modal -->
