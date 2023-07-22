@@ -78,6 +78,9 @@ Route::group(['middleware' => 'seller'], function () {
 
         Route::get('/', [SellerController::class, 'index'])->name('seller_index');
         Route::get('/property', [SellerController::class, 'addPropertyPage'])->name('seller_add_property');
+        Route::post('/property', [SellerController::class, 'addProperty'])->name('seller_submit_property');
+        Route::get('/agents', [SellerController::class, 'agents'])->name('seller_agents');
+        Route::get('/my_agents', [SellerController::class, 'my_agents'])->name('seller_my_agents');
 
     });
 

@@ -45,11 +45,11 @@
     <div class="header">
         <a href="index"><img src="{{asset('assets/images/logo.png')}}" alt="Realestate"></a>
 
-        <ul class="pull-right">
-            <li><a href="{{route('buysalerent')}}">Buy</a></li>
-            <li><a href="{{route('buysalerent')}}">Sale</a></li>
-            <li><a href="{{route('buysalerent')}}">Agent</a></li>
-        </ul>
+{{--        <ul class="pull-right">--}}
+{{--            <li><a href="{{route('buysalerent')}}">Buy</a></li>--}}
+{{--            <li><a href="{{route('buysalerent')}}">Sale</a></li>--}}
+{{--            <li><a href="{{route('buysalerent')}}">Agent</a></li>--}}
+{{--        </ul>--}}
     </div>
     <!-- #Header Starts -->
 </div>

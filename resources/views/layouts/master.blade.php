@@ -2,9 +2,6 @@
 <html lang="en">
     <head>
         @include('partials.head')
-        <style>
-        @yield('style')
-        </style>
     </head>
     <body>
         @include('partials.navbar')

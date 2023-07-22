@@ -1,5 +1,11 @@
 @extends('layouts.main')
 
+@section('nav_line_item')
+    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('seller_index') }}">Home</a></li>
+    <li class="{{ Request::is('seller_agents') ? 'active' : '' }}"><a href="{{ route('seller_agents') }}">Agents</a></li>
+    <li class="{{ Request::is('seller_my_agents') ? 'active' : '' }}"><a href="{{ route('seller_my_agents') }}">My Agents</a></li>
+@endsection
+
 @section('content')
         <!-- banner -->
         <div class="container">

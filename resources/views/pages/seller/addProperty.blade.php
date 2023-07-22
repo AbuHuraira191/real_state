@@ -1,7 +1,12 @@
-@extends('layouts.master')
+@extends('layouts.main')
+
+@section('nav_line_item')
+    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('seller_index') }}">Home</a></li>
+    <li class="{{ Request::is('agents') ? 'active' : '' }}"><a href="{{ route('agents') }}">Agents</a></li>
+    <li class="{{ Request::is('seller_my_agents') ? 'active' : '' }}"><a href="{{ route('seller_my_agents') }}">My Agents</a></li>
+@endsection
 
 @section('content')
-
     <!-- banner -->
     <div class="inside-banner">
         <div class="container">
@@ -16,53 +21,97 @@
         <div class="spacer">
             <div class="row register">
                 <div>
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('seller_submit_property') }}">
                         @csrf
-                        <div class="form-group">
-                            <select class="form-control" name="role" required>
-                                <option value="" selected disabled hidden>Select Role</option>
-                                <option value="admin">Admin</option>
-                                <option value="seller">Seller</option>
-                                <option value="dealer">Dealer</option>
-                                <option value="buyer">Buyer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                        </div>
+
+                        {{--        First Row         --}}
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label class="sr-only" for="exampleInputField1">Field 1</label>
-                                    <input type="text" name="field1" class="form-control" id="exampleInputField1" placeholder="Field 1" required>
+                                    <label class="form-label" for="property_name">Property name</label>
+                                    <input type="text" name="property_name" class="form-control" id="property_name" placeholder="Enter the Property name" required>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label class="sr-only" for="exampleInputField2">Field 2</label>
-                                    <input type="text" name="field2" class="form-control" id="exampleInputField2" placeholder="Field 2" required>
+                                    <label class="form-label" for="property_price">Price in Rs.</label>
+                                    <input type="number" name="property_price" class="form-control" id="property_price" placeholder="Enter the price of property" required>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="sr-only" for="exampleInputField3">Field 3</label>
-                                    <input type="text" name="field3" class="form-control" id="exampleInputField3" placeholder="Field 3" required>
+                                    <label class="form-label" for="no_bed">No. Of Bed</label>
+                                    <input type="number" name="no_bed" class="form-control" id="no_bed" placeholder="No. of Bed" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="no_room">No. Of Leaving Room</label>
+                                    <input type="number" name="no_room" class="form-control" id="no_room" placeholder="No. of Leaving Room" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="no_parking">No. Of Parking</label>
+                                    <input type="number" name="no_parking" class="form-control" id="no_parking" placeholder="No. of Parking" required>
                                 </div>
                             </div>
                         </div>
-                        <!-- Add more rows of fields here -->
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
+
+                        {{--        Second Row         --}}
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-label" for="images">Images</label>
+                                    <input class="form-control" type="file" id="images" multiple>
+{{--                                    <input type="text" name="field1" class="form-control" id="exampleInputField1" placeholder="Field 1" required>--}}
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select class="form-control" name="status" required>
+                                        <option value="" selected disabled hidden>Select status</option>
+                                        <option value="new">New</option>
+                                        <option value="old">Old</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-label" for="images">Location City</label>
+                                    <input type="text" name="location" class="form-control" id="location" placeholder="Enter Location" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-label" for="act">Act as seller</label>
+                                    <select class="form-control" name="act" required>
+                                        <option value="" selected disabled hidden>Select Act</option>
+                                        <option value="new">Yes</option>
+                                        <option value="old">No</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <br>
-                        <button type="submit" class="btn btn-success">Sign in</button>
+
+                        {{--         3rd Row               --}}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="address">Address</label>
+                                    <textarea rows="6" class="form-control" placeholder="Enter Address of property" name="address" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="description">Description</label>
+                                    <textarea rows="6" class="form-control" placeholder="Enter Description of property" name="description" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Add</button>
                     </form>
                 </div>
             </div>

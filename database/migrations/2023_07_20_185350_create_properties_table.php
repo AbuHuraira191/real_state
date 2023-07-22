@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('detail');
             $table->string('type')->nullable();
             $table->string('address');
-            $table->string('location');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('location')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('bid_status')->nullable();
             $table->string('action')->nullable();
             $table->string('rating')->nullable();

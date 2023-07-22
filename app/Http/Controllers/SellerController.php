@@ -21,8 +21,21 @@ class SellerController extends Controller
         return view('pages.seller.index');
     }
 
-    public function addPropertyPage(Request $request){
+    public function addPropertyPage(){
 
         return view('pages.seller.addProperty');
+    }
+
+    public function addProperty(Request $request){
+
+        $this->seller_service->addProperty($request);
+    }
+
+    public function agents(Request $request){
+        return view('pages.seller.agents');
+    }
+
+    public function my_agents(Request $request){
+        return view('pages.seller.myAgents');
     }
 }
