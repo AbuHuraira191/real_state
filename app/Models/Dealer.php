@@ -17,4 +17,14 @@ class Dealer extends Model
         'about',
         'address'
     ];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class,'act_dealer_id');
+    }
+
+    public function sellers()
+    {
+        return $this->hasMany(Seller::class);
+    }
 }

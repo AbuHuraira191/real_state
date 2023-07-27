@@ -43,7 +43,7 @@
 <div class="container">
     <!-- Header Starts -->
     <div class="header">
-        <a href="index"><img src="{{asset('assets/images/logo.png')}}" alt="Realestate"></a>
+        <a href="index"><img src="{{asset('assets/images/logo.png')}}" alt="Dreamlands Dealing"></a>
 
         {{--        <ul class="pull-right">--}}
         {{--            <li><a href="{{route('buysalerent')}}">Buy</a></li>--}}
@@ -58,4 +58,5 @@
 
 @include('partials.footer')
 </body>
+@yield('script')
 </html>

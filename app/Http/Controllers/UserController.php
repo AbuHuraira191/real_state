@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
+use App\Models\Dealer;
+use App\Models\Property;
+use App\Models\Seller;
 use App\Services\UserServices;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -38,10 +41,15 @@ class UserController extends Controller
     }
 
     public function login(LoginRequest $request){
-        session()->put('role', $request['role']);
+        $user_role = $request['role'];
+        session()->put('role', $user_role);
         session()->put('email', $request['email']);
 
-        return redirect()->route($request['role'].'_index');
+        $user_data = $this->user_service->getUser();
+        session()->put('user', $user_data);
+
+
+        return redirect()->route($user_role.'_index');
     }
 
     public function logout(){
@@ -51,7 +59,10 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('pages.index');
+        $properties = Property::where('bid_status', 'on')->limit(13)->get();
+
+//        dd($properties);
+        return view('pages.index',compact('properties'));
     }
 
     public function about()
@@ -84,9 +95,17 @@ class UserController extends Controller
         return view('pages.buysalerent');
     }
 
-    public function property_detail()
+    public function property_detail($id)
     {
-        return view('pages.property-detail');
+        $property = Property::where('id', $id)->first();
+        $hot_properties = Property::where('hot_status','yes')->take(4)->get();
+
+        if ($property['act_seller_id'] != null){
+            $dealer_detail = Seller::find($property['act_seller_id']);
+        }else{
+            $dealer_detail = Dealer::find($property['act_dealer_id']);
+        }
+        return view('pages.property-detail',compact('property','hot_properties','dealer_detail'));
     }
 
     public function register()

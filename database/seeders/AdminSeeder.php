@@ -18,7 +18,8 @@ class AdminSeeder extends Seeder
 
             ], [
                 'name' => 'Real State',
-                'password' => bcrypt('123456'),
+//                'password' => bcrypt('123456'),
+                'password' => '123456',
             ]
         );
     }

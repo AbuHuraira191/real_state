@@ -18,6 +18,11 @@
                 <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
                     <form method="POST" action="{{route('login')}}">
                         @csrf
+                        @if (request()->has('message'))
+                            <div class="alert alert-danger">
+                                {{ request()->query('message') }}
+                            </div>
+                        @endif
                         <div class="form-group">
                             <select class="form-control" name="role" required>
                                 <option value="" selected disabled hidden>Select Role</option>
@@ -38,11 +43,11 @@
                             <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
                         </div>
 
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
+{{--                        <div class="checkbox">--}}
+{{--                            <label>--}}
+{{--                                <input type="checkbox"> Remember me--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
                         <br>
                         <button type="submit" class="btn btn-success">Sign in</button>
                     </form>

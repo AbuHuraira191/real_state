@@ -36,6 +36,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         ],
 
         'api' => [
@@ -71,6 +73,6 @@ class Kernel extends HttpKernel
         'buyer' => \App\Http\Middleware\BuyerMiddleware::class,
         'dealer' => \App\Http\Middleware\DealerMiddleware::class,
         'seller' => \App\Http\Middleware\SellerMiddleware::class,
+        'main' => \App\Http\Middleware\MainMiddleware::class,
     ];
-
 }

@@ -1,72 +1,51 @@
 @extends('layouts.master')
 
 @section('content')
+{{--{{--}}
+{{--    dd($properties[0]->images[0]['image_path'])--}}
+{{--}}--}}
+{{--<img src="{{ asset($properties[0]->images[0]['image_path']) }}" alt="Image">--}}
 
-    <div class="">
+<div class="">
         <div id="slider" class="sl-slider-wrapper">
-
             <div class="sl-slider">
+                @php
+                    $i = 1;
+                @endphp
+                @foreach($properties as $property)
+                    @php
+                        $i++;
+                    @endphp
+                    @if($i < 7)
+                        @if($i%2 === 0)
+                            <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                                <div class="sl-slide-inner">
+                                    <div class="bg-img" style="background-image: url('{{ asset($property->images[0]['image_path']) }}');"></div>
+                                    <h2><a href="#">{{$property['bed']}} Bed Rooms and {{$property['living_room']}} Living Room Property on Sale</a></h2>
+                                    <blockquote>
+                                        <p class="location"><span class="glyphicon glyphicon-map-marker"></span> {{$property['address']}}, {{$property['location_city']}}</p>
+                                        <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
+                                        <cite>RS. {{$property['price']}}</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        @else
+                            <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                                <div class="sl-slide-inner">
+                                    <<div class="bg-img" style="background-image: url('{{ asset($property->images[0]['image_path']) }}');"></div>
+                                    <h2><a href="#">{{$property['bed']}} Bed Rooms and {{$property['living_room']}} Living Room Property on Sale</a></h2>
+                                    <blockquote>
+                                        <p class="location"><span class="glyphicon glyphicon-map-marker"></span> {{$property['address']}}, {{$property['location_city']}}</p>
+                                        <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
+                                        <cite>RS. {{$property['price']}}</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+                @endforeach
 
-                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-1"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-2"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-3"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-4"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-5"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-            </div><!-- /sl-slider -->
+            <!-- /sl-slider -->
 
 
 
@@ -86,46 +65,10 @@
     <div class="banner-search">
         <div class="container">
             <!-- banner -->
-            <h3>Buy, Sale & Rent</h3>
             <div class="searchbar">
                 <div class="row">
-                    <div class="col-lg-6 col-sm-6">
-                        <input type="text" class="form-control" placeholder="Search of Properties">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-3 ">
-                                <select class="form-control">
-                                    <option>Buy</option>
-                                    <option>Rent</option>
-                                    <option>Sale</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-sm-4">
-                                <select class="form-control">
-                                    <option>Price</option>
-                                    <option>$150,000 - $200,000</option>
-                                    <option>$200,000 - $250,000</option>
-                                    <option>$250,000 - $300,000</option>
-                                    <option>$300,000 - above</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-sm-4">
-                                <select class="form-control">
-                                    <option>Property</option>
-                                    <option>Apartment</option>
-                                    <option>Building</option>
-                                    <option>Office Space</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-sm-4">
-                                <a href="{{ route('buysalerent') }}" class="btn btn-success">Find Now</a>
-
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
                         <p>Join now and get updated with all the properties deals.</p>
-                        {{--                        <button class="btn btn-info"   data-toggle="modal" data-target="#loginpop">Login</button>--}}
                         <a href="{{ route('loginPage') }}" class="btn btn-info">Login</a>
                         <a href="{{ route('register') }}" class="btn btn-info">Register</a>
                     </div>
@@ -134,105 +77,33 @@
         </div>
     </div>
     <!-- banner -->
+    @if (request()->has('message'))
+        <div class="alert alert-danger">
+            {{ request()->query('message') }}
+        </div>
+    @endif
     <div class="container">
-        <div class="properties-listing spacer"> <a href="{{route('buysalerent')}}" class="pull-right viewall">View All Listing</a>
+        <div class="properties-listing spacer"> <a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}" class="pull-right viewall">View All Listing</a>
             <h2>Featured Properties</h2>
             <div id="owl-example" class="owl-carousel">
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/1.jpg')}}" class="img-responsive" alt="properties"/>
-                        <div class="status sold">Sold</div>
+                @foreach($properties as $property)
+                    <div class="properties">
+                        <div class="image-holder"><img src="{{asset($property->images[0]['image_path'])}}" class="img-responsive" alt="properties" style="height: 175px">
+                            <div class="status {{ $property['status'] === 'Sold' ? 'new' : 'sold' }}">{{$property['status']}}</div>
+                        </div>
+                        <h4><a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}">{{$property['name']}}</a></h4>
+                        <p class="price">Price: Rs.{{$property['price']}}</p>
+                        <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">{{$property['bed']}}</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">{{$property['living_room']}}</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">{{$property['parking']}}</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">{{$property['kitchen']}}</span> </div>
+                        <a class="btn btn-primary" href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}">View Details</a>
                     </div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/2.jpg')}}" class="img-responsive" alt="properties"/>
-                        <div class="status new">New</div>
-                    </div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/3.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/4.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/1.jpg')}}" class="img-responsive" alt="properties"/>
-                        <div class="status sold">Sold</div>
-                    </div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/2.jpg')}}" class="img-responsive" alt="properties"/>
-                        <div class="status sold">Sold</div>
-                    </div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/3.jpg')}}" class="img-responsive" alt="properties"/>
-                        <div class="status new">New</div>
-                    </div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/4.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/1.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/2.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-                <div class="properties">
-                    <div class="image-holder"><img src="{{asset('assets/images/properties/3.jpg')}}" class="img-responsive" alt="properties"/></div>
-                    <h4><a href="{{route('property-detail')}}">Royal Inn</a></h4>
-                    <p class="price">Price: $234,900</p>
-                    <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-                    <a class="btn btn-primary" href="{{route('property-detail')}}">View Details</a>
-                </div>
-
+                @endforeach
             </div>
         </div>
         <div class="spacer">
             <div class="row">
                 <div class="col-lg-6 col-sm-9 recent-view">
                     <h3>About Us</h3>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><a href="about.php">Learn More</a></p>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><a href="{{route('about')}}">Learn More</a></p>
 
                 </div>
                 <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
@@ -246,42 +117,39 @@
                         </ol>
                         <!-- Carousel items -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-lg-4"><img src="{{asset('assets/images/properties/1.jpg')}}" class="img-responsive" alt="properties"/></div>
-                                    <div class="col-lg-8">
-                                        <h5><a href="{{route('property-detail')}}">Integer sed porta quam</a></h5>
-                                        <p class="price">$300,000</p>
-                                        <a href="{{route('property-detail')}}" class="more">More Detail</a> </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4"><img src="{{asset('assets/images/properties/2.jpg')}}" class="img-responsive" alt="properties"/></div>
-                                    <div class="col-lg-8">
-                                        <h5><a href="{{route('property-detail')}}">Integer sed porta quam</a></h5>
-                                        <p class="price">$300,000</p>
-                                        <a href="{{route('property-detail')}}" class="more">More Detail</a> </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4"><img src="{{asset('assets/images/properties/3.jpg')}}" class="img-responsive" alt="properties"/></div>
-                                    <div class="col-lg-8">
-                                        <h5><a href="{{route('property-detail')}}">Integer sed porta quam</a></h5>
-                                        <p class="price">$300,000</p>
-                                        <a href="{{route('property-detail')}}" class="more">More Detail</a> </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4"><img src="{{asset('assets/images/properties/4.jpg')}}" class="img-responsive" alt="properties"/></div>
-                                    <div class="col-lg-8">
-                                        <h5><a href="{{route('property-detail')}}">Integer sed porta quam</a></h5>
-                                        <p class="price">$300,000</p>
-                                        <a href="{{route('property-detail')}}" class="more">More Detail</a> </div>
-                                </div>
-                            </div>
+
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach($properties as $property)
+                                @php
+                                    $i++;
+                                @endphp
+                                @if($i < 5)
+                                    @if($i == 1)
+                                        <div class="item active">
+                                            <div class="row">
+                                                <div class="col-lg-4"><img src="{{asset($property->images[0]['image_path'])}}" class="img-responsive" alt="properties"/></div>
+                                                <div class="col-lg-8">
+                                                    <h5><a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}">{{$property['name']}}</a></h5>
+                                                    <p class="price">Rs.{{$property['price']}}</p>
+                                                    <a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}" class="more">More Detail</a> </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-lg-4"><img src="{{asset($property->images[0]['image_path'])}}" class="img-responsive" alt="properties"/></div>
+                                                <div class="col-lg-8">
+                                                    <h5><a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}">{{$property['name']}}</a></h5>
+                                                    <p class="price">Rs.{{$property['price']}}</p>
+                                                    <a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}" class="more">More Detail</a> </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>

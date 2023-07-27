@@ -167,4 +167,9 @@ h2{font-size: 25px;}
     padding: 10px 15px;
     border-radius: 5px;
 }
+.preview-image {
+    max-width: 150px;
+    max-height: 150px;
+    margin: 5px;
+}
 

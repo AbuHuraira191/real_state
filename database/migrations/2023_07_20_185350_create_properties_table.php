@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('dealer_id')->nullable();
             $table->bigInteger('seller_id')->nullable();
+            $table->bigInteger('act_dealer_id')->nullable();
+            $table->bigInteger('act_seller_id')->nullable();
             $table->string('name');
             $table->bigInteger('price');
             $table->bigInteger('bed')->nullable();
@@ -24,13 +25,13 @@ return new class extends Migration
             $table->string('detail');
             $table->string('type')->nullable();
             $table->string('address');
-            $table->string('location')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
+            $table->string('location_city')->nullable();
             $table->string('bid_status')->nullable();
-            $table->string('action')->nullable();
+            $table->string('status')->default('For-Sale');
             $table->string('rating')->nullable();
-            $table->string('hot_status')->nullable();
+            $table->string('hot_status')->default('no');
+            $table->date('on_bid_date')->nullable();
+            $table->date('close_bid_date')->nullable();
             $table->timestamps();
         });
     }

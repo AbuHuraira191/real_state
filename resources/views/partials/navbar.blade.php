@@ -24,11 +24,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('index') }}">Home</a></li>
                     <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="{{ route('about') }}">About</a></li>
-                    <li class="{{ Request::is('agents') ? 'active' : '' }}"><a href="{{ route('agents') }}">Agents</a></li>
+{{--                    <li class="{{ Request::is('agents') ? 'active' : '' }}"><a href="{{ route('agents') }}">Dealer</a></li>--}}
 {{--                    <li class="{{ Request::is('blog') ? 'active' : '' }}"><a href="{{ route('blog') }}">Blog</a></li>--}}
                     <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
 {{--                    <li><a data-toggle="modal" data-target="#loginpop">Login</a></li>--}}
-                    <li class="{{ Request::is('loginPage') ? 'active' : '' }}"><a href="{{ route('loginPage') }}">Login</a></li>
+                    <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ route('loginPage') }}">Login</a></li>
                     <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ route('register') }}">Register</a></li>
                 </ul>
             </div>

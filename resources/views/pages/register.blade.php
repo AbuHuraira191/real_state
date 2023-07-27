@@ -49,7 +49,7 @@
                         <textarea rows="6" class="form-control" placeholder="Enter About your seld detail" name="about" required></textarea>
 
 
-                        <button type="submit" class="btn btn-success" name="Submit">Register</button>
+                        <button type="submit" class="btn btn-success">Register</button>
                     </form>
                 </div>
             </div>

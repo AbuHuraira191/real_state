@@ -8,9 +8,8 @@
             <div class="col-lg-3 col-sm-3">
                 <h4>Information</h4>
                 <ul class="row">
+                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="{{route('index')}}">Home</a></li>
                     <li class="col-lg-12 col-sm-12 col-xs-3"><a href="{{route('about')}}">About</a></li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="{{route('agents')}}">Agents</a></li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="{{route('blog')}}">Blog</a></li>
                     <li class="col-lg-12 col-sm-12 col-xs-3"><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
@@ -18,10 +17,13 @@
             <div class="col-lg-3 col-sm-3">
                 <h4>Newsletter</h4>
                 <p>Get notified about the latest properties in our marketplace.</p>
-                <form class="form-inline" role="form">
-                    <input type="text" placeholder="Enter Your email address" class="form-control">
-                    <button class="btn btn-success" type="button">Notify Me!</button>
+                <form class="form-inline" role="form" action="{{ route('index') }}" method="GET">
+                    <input type="text" name="email" placeholder="Enter Your email address" class="form-control" required>
+                    <input type="hidden" name="message" value="Your Email has Successfully Sent.">
+                    <button class="btn btn-success" type="submit">Notify Me!</button>
                 </form>
+
+
             </div>
 
             <div class="col-lg-3 col-sm-3">
@@ -34,13 +36,13 @@
 
             <div class="col-lg-3 col-sm-3">
                 <h4>Contact us</h4>
-                <p><b>Bootstrap Realestate Inc.</b><br>
-                    <span class="glyphicon glyphicon-map-marker"></span> 8290 Walk Street, Australia <br>
-                    <span class="glyphicon glyphicon-envelope"></span> hello@bootstrapreal.com<br>
-                    <span class="glyphicon glyphicon-earphone"></span> (123) 456-7890</p>
+                <p><b>Narowal property dealing</b><br>
+                    <span class="glyphicon glyphicon-map-marker"></span> Address University of Narowal, Narowal <br>
+                    <span class="glyphicon glyphicon-envelope"></span> narowalproperty@gmail.com<br>
+                    <span class="glyphicon glyphicon-earphone"></span> +923098551018</p>
             </div>
         </div>
-        <p class="copyright">Copyright 2013. All rights reserved.	</p>
+        <p class="copyright">Copyright 2023. All rights reserved.	</p>
 
 
     </div></div>

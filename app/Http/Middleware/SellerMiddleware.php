@@ -16,7 +16,6 @@ class SellerMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $role = session('role');
-
         // Check if the role is 'admin' and the password matches
         if ($role === 'seller') {
             return $next($request);
