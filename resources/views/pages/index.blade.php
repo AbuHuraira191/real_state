@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-{{--{{--}}
-{{--    dd($properties[0]->images[0]['image_path'])--}}
-{{--}}--}}
-{{--<img src="{{ asset($properties[0]->images[0]['image_path']) }}" alt="Image">--}}
 
 <div class="">
         <div id="slider" class="sl-slider-wrapper">
@@ -12,7 +8,13 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($properties as $property)
+                @if ($properties->isEmpty())
+                    <p style="text-align: center"><strong>There is No Property present for now.</strong></p>
+                    <div class="sad-icon">
+                        <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                    </div>
+                @else
+                    @foreach($properties as $property)
                     @php
                         $i++;
                     @endphp
@@ -44,6 +46,7 @@
                         @endif
                     @endif
                 @endforeach
+                @endif
 
             <!-- /sl-slider -->
 
@@ -86,7 +89,13 @@
         <div class="properties-listing spacer"> <a href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}" class="pull-right viewall">View All Listing</a>
             <h2>Featured Properties</h2>
             <div id="owl-example" class="owl-carousel">
-                @foreach($properties as $property)
+                @if ($properties->isEmpty())
+                    <p style="text-align: center"><strong>There is No Property present for now.</strong></p>
+                    <div class="sad-icon">
+                        <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                    </div>
+                @else
+                    @foreach($properties as $property)
                     <div class="properties">
                         <div class="image-holder"><img src="{{asset($property->images[0]['image_path'])}}" class="img-responsive" alt="properties" style="height: 175px">
                             <div class="status {{ $property['status'] === 'Sold' ? 'new' : 'sold' }}">{{$property['status']}}</div>
@@ -97,6 +106,7 @@
                         <a class="btn btn-primary" href="{{ route('loginPage', ['message' => 'Please login first or make an account to visit pages.']) }}">View Details</a>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
         <div class="spacer">

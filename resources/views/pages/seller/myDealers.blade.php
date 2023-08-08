@@ -13,7 +13,7 @@
     <!-- banner -->
     <div class="inside-banner">
         <div class="container">
-            <span class="pull-right"><a href="#">Home</a> / Dealers</span>
+            <span class="pull-right"><a href="{{route('seller_index')}}">Home</a> / Dealers</span>
             <h2>My Dealers</h2>
         </div>
     </div>
@@ -26,17 +26,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        @foreach($dealers as $dealer)
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="properties">
-                                    <div class="image-holder"><img src="{{asset('assets/images/properties/dealer.png')}}" style="height: 40%;width: 40%" alt="properties">
-                                    </div>
-                                    <h4><a>{{$dealer['name']}}</a></h4>
-                                    <p class="price">Phone: {{$dealer['phone']}}</p>
-                                    <p class="price">Email: {{$dealer['email']}} </p>
-                                </div>
+                        @if ($dealers->isEmpty())
+                            <p style="text-align: center"><strong>You Don't have any Dealer yet.</strong></p>
+                            <div class="sad-icon">
+                                <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
                             </div>
-                        @endforeach
+                        @else
+                            @foreach($dealers as $dealer)
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="properties">
+                                        <div class="image-holder"><img src="{{asset('assets/images/properties/dealer.png')}}" style="height: 40%;width: 40%" alt="properties">
+                                        </div>
+                                        <h4><a>{{$dealer['name']}}</a></h4>
+                                        <p class="price">Phone: {{$dealer['phone']}}</p>
+                                        <p class="price">Email: {{$dealer['email']}} </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
 
                         <div class="center">
                             <ul class="pagination">
@@ -49,5 +56,5 @@
             </div>
         </div>
     </div>
-
+    <div style="margin-bottom: 175px"></div>
 @endsection

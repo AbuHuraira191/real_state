@@ -34,7 +34,7 @@ class AddPropertyRequest extends FormRequest
             'location_city'=> 'required',
             'act'=> 'required',
             'images' => 'required|array|max:4',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:5120'
+            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ];
     }
 
@@ -53,7 +53,8 @@ class AddPropertyRequest extends FormRequest
             'location_city.required'=> 'Please Enter the location city',
             'act.required'=> 'Please select the you act',
             'images.max' => 'You can upload a maximum of 5 images.',
-            'images.required' => 'Please Select the images and should be jpeg,png,jbg and max size 5120'
+            'images.required' => 'Please Select the images and should be jpeg,png,jbg and max size 5120',
+            'cv.mimes' => 'Please Select the images and should be jpeg,png,jbg and max size 5120'
         ];
     }
 }

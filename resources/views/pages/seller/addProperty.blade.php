@@ -12,7 +12,7 @@
     <!-- banner -->
     <div class="inside-banner">
         <div class="container">
-            <span class="pull-right"><a href="{{route('index')}}">Home</a> / Add-Property</span>
+            <span class="pull-right"><a href="{{route('seller_index')}}">Home</a> / Add-Property</span>
             <h2>Add Property</h2>
         </div>
     </div>

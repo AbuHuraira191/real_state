@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('seller_id');
             $table->bigInteger('dealer_id');
-            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }

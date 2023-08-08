@@ -47,9 +47,13 @@
                             <label class="form-label" for="dealer_id">Select Dealer</label>
                             <select class="form-control" name="dealer_id" required>
                                 <option value="" selected disabled hidden>Select Dealer</option>
-                                @foreach($dealers as $dealer)
-                                    <option value="{{$dealer['id']}}" @if(isset($id) && $id == $dealer['id']) selected @endif>{{$dealer['name']}}</option>
-                                @endforeach
+                                @if(count($dealers) > 0)
+                                    @foreach($dealers as $dealer)
+                                        <option value="{{$dealer['id']}}" @if(isset($id) && $id == $dealer['id']) selected @endif>{{$dealer['name']}}</option>
+                                    @endforeach
+                                @else
+                                    <option disabled>No dealers are present yet</option>
+                                @endif
                             </select>
 
                             <label class="form-label" for="dealer_id">Select Property</label>
@@ -69,8 +73,6 @@
         </div>
     </div>
 
-    <div style="margin-bottom: 175px">
-
-    </div>
+    <div style="margin-bottom: 175px"></div>
 
 @endsection

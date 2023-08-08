@@ -24,7 +24,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        @foreach($sellers as $seller)
+                        @if ($sellers->isEmpty())
+                            <p style="text-align: center"><strong>You don't have any seller yet.</strong></p>
+                            <div class="sad-icon">
+                                <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                            </div>
+                        @else
+                            @foreach($sellers as $seller)
                             <div class="col-lg-4 col-sm-6">
                                 <div class="properties">
                                     <div class="image-holder"><img src="{{asset('assets/images/properties/dealer.png')}}" style="height: 40%;width: 40%" alt="properties">
@@ -35,6 +41,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @endif
 
                         <div class="center">
                             <ul class="pagination">

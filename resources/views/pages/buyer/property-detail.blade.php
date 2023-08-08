@@ -26,7 +26,13 @@
 
                     <div class="hot-properties hidden-xs">
                         <h4>Hot Properties</h4>
-                        @foreach($hot_properties as $hot_property)
+                        @if ($hot_properties->isEmpty())
+                            <p style="text-align: center"><strong>There is No Property present for bid yet.</strong></p>
+                            <div class="sad-icon">
+                                <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                            </div>
+                        @else
+                            @foreach($hot_properties as $hot_property)
                             <div class="row">
                                 <div class="col-lg-4 col-sm-5"><img src="{{asset($hot_property->images[0]['image_path'])}}" class="img-responsive img-circle" alt="properties"/></div>
                                 <div class="col-lg-8 col-sm-7">
@@ -34,6 +40,7 @@
                                     <p class="price">Rs.{{$hot_property['price']}}</p> </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
 
 
@@ -129,11 +136,11 @@
                                     <label><strong>Your Bid Rate:</strong></label>
                                     <input type="text" class="form-control" placeholder="Rs.{{ $bid_data['bid_rate'] ?? '0' }}" disabled>
                                     <label><strong>Bid Start Date:</strong></label>
-                                    <input type="text" class="form-control" placeholder="Rs.{{ $bid_data['on_bid_date'] ?? '00-00-00' }}" disabled>
-                                    <label><strong>Bid Start Date:</strong></label>
-                                    <input type="text" class="form-control" placeholder="Rs.{{ $bid_data['close_bid_date'] ?? '00-00-00' }}" disabled>
+                                    <input type="text" class="form-control" placeholder="Rs.{{ $property['on_bid_date'] ?? '00-00-00' }}" disabled>
+                                    <label><strong>Bid Close Date:</strong></label>
+                                    <input type="text" class="form-control" placeholder="Rs.{{ $property['close_bid_date'] ?? '00-00-00' }}" disabled>
                                     @php
-                                        $disableBidInput = (!empty($bid_data['close_bid_date']) && $bid_data['close_bid_date'] >= date('Y-m-d'));
+                                        $disableBidInput = (empty($property['close_bid_date']) || $property['close_bid_date'] < date('Y-m-d'));
                                     @endphp
                                     <form class="form-inline" role="form" action="{{ route('buyer_store_bid') }}" method="POST">
                                         @csrf
@@ -142,7 +149,7 @@
                                         <input type="number" class="form-control" placeholder="Enter Your Bid Rate" name="bid_rate" required
                                                @if($disableBidInput)
                                                    disabled
-                                            @endif
+                                               @endif
                                         >
                                         <input type="hidden" name="property_id" value="{{$property['id']}}">
                                         <input type="hidden" name="bid_id" value="{{ $bid_data ? $bid_data['id'] : '' }}">
@@ -150,8 +157,11 @@
                                         <button type="submit" class="btn btn-primary"
                                                 @if($disableBidInput)
                                                     disabled
-                                            @endif
+                                                @endif
                                         >Submit</button>
+                                        @if($disableBidInput)
+                                            <p style="margin-top: 5px ; color: red"><strong>Note</strong> : You are currently unable to bid your rate because the dealer has not started the bidding period yet,<strong>Or the bid date has already expired</strong>.</p>
+                                        @endif
                                     </form>
 
                                 </div>

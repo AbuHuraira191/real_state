@@ -7,16 +7,32 @@
 @endsection
 
 @section('content')
+
+    <!-- banner -->
+    <div class="inside-banner">
+        <div class="container">
+            <span class="pull-right"><a href="{{route('dealer_index')}}">Home</a> / Dealer dashboard</span>
+            <h2>Welcome On Buyer Dashboard: {{$user_data['name']}}</h2>
+        </div>
+    </div>
+    <!-- banner -->
+
     <div class="container">
-        <div class="properties-listing spacer"> <a href="{{route('buyer_property_list')}}" class="pull-right viewall">View All Listing</a>
-            <h2>Welcome On Buyer Dashboard : {{$user_data['name']}}</h2>
+        <a style="margin-top: 10px" href="{{route('buyer_property_list')}}" class="pull-right viewall">View All Listing</a>
+        <div class="properties-listing spacer">
             @if (request()->has('message'))
                 <div class="alert alert-danger">
                     {{ request()->query('message') }}
                 </div>
             @endif
             <div id="owl-example" class="owl-carousel">
-                @foreach($properties as $property)
+                @if ($properties->isEmpty())
+                    <p style="text-align: center"><strong>There is No Property present for bid yet.</strong></p>
+                    <div class="sad-icon">
+                        <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                    </div>
+                @else
+                    @foreach($properties as $property)
                     <div class="properties">
                         <div class="image-holder"><img src="{{asset($property->images[0]['image_path'])}}" class="img-responsive" alt="properties" style="height: 175px">
                             <div class="status {{ $property['status'] === 'Sold' ? 'new' : 'sold' }}">{{$property['status']}}</div>
@@ -27,6 +43,7 @@
                         <a class="btn btn-primary" href="{{route('buyer_property_detail',['id' => $property['id']])}}">View Details</a>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </div>

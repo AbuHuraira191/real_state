@@ -7,17 +7,31 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="properties-listing spacer"> <a href="{{route('dealer_property_list')}}" class="pull-right viewall">View All Listing</a>
+
+    <!-- banner -->
+    <div class="inside-banner">
+        <div class="container">
+            <span class="pull-right"><a href="{{route('dealer_index')}}">Home</a> / Dealer dashboard</span>
             <h2>Welcome On Dealer Dashboard: {{$user_data['name']}}</h2>
+        </div>
+    </div>
+    <!-- banner -->
+
+    <div class="container">
+        <a style="margin-top: 10px" href="{{route('dealer_property_list')}}" class="pull-right viewall">View All Listing</a>
+        <div class="properties-listing spacer">
             @if (request()->has('message'))
                 <div class="alert alert-danger">
                     {{ request()->query('message') }}
                 </div>
             @endif
+
             <div id="owl-example" class="owl-carousel">
                 @if ($properties->isEmpty())
-                    <p>No properties available.</p>
+                    <p style="text-align: center"><strong>You Don't have any Property assign yet.</strong></p>
+                    <div class="sad-icon">
+                        <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                    </div>
                 @else
                     @foreach($properties as $property)
                         <div class="properties">

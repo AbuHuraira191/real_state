@@ -12,5 +12,6 @@ class PevirtSeller extends Model
     protected $fillable = [
         'seller_id',
         'dealer_id',
+        'product_id',
     ];
 }

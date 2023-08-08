@@ -40,7 +40,13 @@
 
                     <div class="hot-properties hidden-xs">
                         <h4>Hot Properties</h4>
-                        @foreach($hot_properties as $hot_property)
+                        @if ($hot_properties->isEmpty())
+                            <p style="text-align: center"><strong>No Hot properties present yet.</strong></p>
+                            <div class="sad-icon">
+                                <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                            </div>
+                        @else
+                            @foreach($hot_properties as $hot_property)
                             <div class="row">
                                 <div class="col-lg-4 col-sm-5"><img src="{{asset($hot_property->images[0]['image_path'])}}" class="img-responsive img-circle" alt="properties"/></div>
                                 <div class="col-lg-8 col-sm-7">
@@ -48,12 +54,19 @@
                                     <p class="price">Rs.{{$hot_property['price']}}</p> </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-lg-9 col-sm-8">
                     <div class="row">
-                        @foreach ($properties as $property)
+                        @if ($properties->isEmpty())
+                            <p style="text-align: center"><strong>You are not leading any property as dealer yet.</strong></p>
+                            <div class="sad-icon">
+                                <img src="{{asset('assets/images/sad-icon.png')}}" alt="Sad Icon">
+                            </div>
+                        @else
+                            @foreach ($properties as $property)
                             <!-- properties -->
                             <div class="col-lg-4 col-sm-6">
                                 <div class="properties">
@@ -74,6 +87,7 @@
                             </div>
                             <!-- properties -->
                         @endforeach
+                        @endif
                     </div>
                     <div class="center">
                         {{ $properties->links() }}

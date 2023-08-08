@@ -61,7 +61,9 @@ class DealerController extends Controller
             try {
                 $property->update([
                     'status' => $data['status'],
-                    'bid_status' => $data['bid_status'],
+                    'bid_status' => $data['bid_status'] ?? '',
+                    'on_bid_date' => $data['on_bid_date'] ?? '',
+                    'close_bid_date' => $data['close_bid_date'] ?? '',
                 ]);
                 $property->save();
                 return redirect()->route('dealer_property_permissions', ['id' => $data['property_id']])->with('success','Successfully Permissions of Property Submit');

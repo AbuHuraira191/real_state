@@ -23,12 +23,7 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-{{--                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('index') }}">Home</a></li>--}}
-{{--                    <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="{{ route('about') }}">About</a></li>--}}
-{{--                    <li class="{{ Request::is('agents') ? 'active' : '' }}"><a href="{{ route('agents') }}">Agents</a></li>--}}
                     @yield('nav_line_item')
-                    {{--                    <li class="{{ Request::is('blog') ? 'active' : '' }}"><a href="{{ route('blog') }}">Blog</a></li>--}}
-{{--                    <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>--}}
                     <li><a href="{{ route('logout') }}">LogOut</a></li>
                 </ul>
             </div>
@@ -43,13 +38,7 @@
 <div class="container">
     <!-- Header Starts -->
     <div class="header">
-        <a href="index"><img src="{{asset('assets/images/logo.png')}}" alt="Dreamlands Dealing"></a>
-
-        {{--        <ul class="pull-right">--}}
-        {{--            <li><a href="{{route('buysalerent')}}">Buy</a></li>--}}
-        {{--            <li><a href="{{route('buysalerent')}}">Sale</a></li>--}}
-        {{--            <li><a href="{{route('buysalerent')}}">Rent</a></li>--}}
-        {{--        </ul>--}}
+        <a href="index"><img style="width: 400px" src="{{asset('assets/images/logo.png')}}" alt="Dreamlands Dealing"></a>
     </div>
     <!-- #Header Starts -->
 </div>

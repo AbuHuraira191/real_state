@@ -55,7 +55,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="properties">
                                     <div class="image-holder"><img src="{{ asset($property->images[0]['image_path']) }}" class="img-responsive" alt="properties" style="height: 175px">
-                                        <div class="status sold">Sold</div>
+                                        <div class="status {{ $property['status'] === 'Sold' ? 'new' : 'sold' }}">{{$property['status']}}</div>
                                     </div>
                                     <h4><a href="{{ route('admin_property_detail', ['id' => $property['id']]) }}">{{ $property['name'] }}</a></h4>
                                     <p class="price">Price: Rs.{{ $property['price'] }}</p>
